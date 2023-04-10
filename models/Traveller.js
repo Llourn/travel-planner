@@ -7,9 +7,10 @@ Traveller.init(
   {
     id: {
       type: DataTypes.INTEGER,
-      allowNull: false,
       primaryKey: true,
+      allowNull: false,
       autoIncrement: true,
+      unique: false,
     },
     name: {
       type: DataTypes.STRING,
@@ -32,3 +33,5 @@ Traveller.init(
     modelName: "traveller",
   }
 );
+
+module.exports = Traveller;

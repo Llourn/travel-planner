@@ -7,7 +7,6 @@ Trip.init(
   {
     id: {
       type: DataTypes.INTEGER,
-      allowNull: false,
       primaryKey: true,
       autoIncrement: true,
     },
@@ -21,15 +20,16 @@ Trip.init(
     },
     traveller_id: {
       type: DataTypes.INTEGER,
-      references: {
+      unique: false,
+      reference: {
         model: "traveller",
         key: "id",
       },
     },
     location_id: {
       type: DataTypes.INTEGER,
-      allowNull: false,
-      references: {
+      unique: false,
+      reference: {
         model: "location",
         key: "id",
       },
@@ -41,5 +41,8 @@ Trip.init(
     freezeTableName: true,
     underscored: true,
     modelName: "trip",
+    unique: false,
   }
 );
+
+module.exports = Trip;

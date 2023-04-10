@@ -1,4 +1,3 @@
-require("dotenv").config();
 const express = require("express");
 const routes = require("./routes");
 const sequelize = require("./config/connection");
@@ -11,7 +10,6 @@ app.use(express.urlencoded({ extended: true }));
 
 app.use(routes);
 
-console.log(sequelize);
-sequelize.sync({ force: false }).then(() => {
-  app.listen(PORT, () => console.log("Now Listening on port " + PORT));
+sequelize.sync({ force: true }).then(() => {
+  app.listen(PORT, () => console.log("🚀 Now Listening on port " + PORT));
 });

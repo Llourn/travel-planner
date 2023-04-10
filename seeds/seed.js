@@ -1,8 +1,8 @@
-const sequelize = require('../config/connection');
-const { Traveller, Location, Trip } = require('../models');
+const sequelize = require("../config/connection");
+const { Traveller, Location, Trip } = require("../models");
 
-const travellerSeedData = require('./travellerSeedData.json');
-const locationSeedData = require('./locationSeedData.json');
+const travellerSeedData = require("./travellerSeedData.json");
+const locationSeedData = require("./locationSeedData.json");
 
 const seedDatabase = async () => {
   await sequelize.sync({ force: true });
@@ -11,17 +11,21 @@ const seedDatabase = async () => {
 
   const locations = await Location.bulkCreate(locationSeedData);
 
+  let test = [];
   // Create trips at random
   for (let i = 0; i < 10; i++) {
     // Get a random traveller's `id`
-    const { id: randomTravellerId } = travellers[
-      Math.floor(Math.random() * travellers.length)
-    ];
+    const { id: randomTravellerId } =
+      travellers[Math.floor(Math.random() * travellers.length)];
 
     // Get a random location's `id`
-    const { id: randomLocationId } = locations[
-      Math.floor(Math.random() * locations.length)
-    ];
+    const { id: randomLocationId } =
+      locations[Math.floor(Math.random() * locations.length)];
+
+    // console.log("❌", randomTravellerId);
+    // console.log("❌", randomLocationId);
+
+    test.push({ randomTravellerId, randomLocationId });
 
     // Create a new trip with random `trip_budget` and `traveller_amount` values, but with ids selected above
     await Trip.create({
@@ -31,10 +35,11 @@ const seedDatabase = async () => {
       location_id: randomLocationId,
     }).catch((err) => {
       // If there's an error, such as the same random pairing of `traveller.id` and `location.id` occurring and we get a constraint error, don't quit the Node process
+      test.push({ message: err.message });
       console.log(err);
     });
   }
-
+  console.log(test);
   process.exit(0);
 };
 

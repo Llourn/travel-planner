@@ -7,9 +7,10 @@ Location.init(
   {
     id: {
       type: DataTypes.INTEGER,
-      allowNull: false,
       primaryKey: true,
+      allowNull: false,
       autoIncrement: true,
+      unique: false,
     },
     location_name: {
       type: DataTypes.STRING,
@@ -24,3 +25,5 @@ Location.init(
     modelName: "location",
   }
 );
+
+module.exports = Location;
