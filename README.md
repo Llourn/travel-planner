@@ -27,6 +27,10 @@ Instructions:
 - update MySQL database connection configuration in `./config/connection.js` or create a `.env` file in the root of the project and include the following entries `DB_NAME`, `DB_USER`, `DB_PASSWORD`, and `PORT`. (feel free to replace mysql with any other db supported by sequelize)
 - `npm run start`
 
+Seed Data:
+
+- `npm run seed`
+
 ## Usage
 
 Once the app is running the following endpoints will be available for use.
