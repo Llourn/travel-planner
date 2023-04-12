@@ -18,4 +18,12 @@ Location.belongsToMany(Traveller, {
   foreignKey: "location_id",
 });
 
+Trip.belongsTo(Traveller, {
+  foreignKey: "traveller_id",
+});
+
+Trip.belongsTo(Location, {
+  foreignKey: "location_id",
+});
+
 module.exports = { Traveller, Location, Trip };
