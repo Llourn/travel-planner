@@ -10,7 +10,6 @@ Location.init(
       primaryKey: true,
       allowNull: false,
       autoIncrement: true,
-      unique: false,
     },
     location_name: {
       type: DataTypes.STRING,

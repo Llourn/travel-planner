@@ -20,7 +20,6 @@ Trip.init(
     },
     traveller_id: {
       type: DataTypes.INTEGER,
-      unique: false,
       reference: {
         model: "traveller",
         key: "id",
@@ -28,7 +27,6 @@ Trip.init(
     },
     location_id: {
       type: DataTypes.INTEGER,
-      unique: false,
       reference: {
         model: "location",
         key: "id",
@@ -41,7 +39,6 @@ Trip.init(
     freezeTableName: true,
     underscored: true,
     modelName: "trip",
-    unique: false,
   }
 );
 
